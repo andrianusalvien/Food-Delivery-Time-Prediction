@@ -1,139 +1,149 @@
-🚚 Food Delivery Time Prediction
-Memprediksi Waktu Pengantaran Makanan Menggunakan Machine Learning
+# 🚚 Food Delivery Time Prediction  
+### *Machine Learning untuk Prediksi Waktu Pengantaran Makanan*
 
-✨ Streamlit App:
-👉 https://food-delivery-time-prediction8.streamlit.app/
+---
 
-📌 Overview
-Proyek ini bertujuan untuk membangun model Machine Learning yang dapat memprediksi waktu pengantaran makanan (dalam menit) berdasarkan faktor operasional seperti:
+## 📌 1. Overview
 
-Jarak pengantaran
+Proyek ini membangun model Machine Learning untuk **memprediksi waktu pengantaran makanan (ETA)** berdasarkan data historis.  
+Model disajikan dalam bentuk **Streamlit App** yang interaktif dan mudah digunakan.
 
-Waktu persiapan makanan
+🔗 **Live App:**  
+https://food-delivery-time-prediction8.streamlit.app/
 
-Cuaca
+---
 
-Tingkat lalu lintas
+## 📂 2. Features
 
-Waktu dalam sehari
+### 📊 **Overview & EDA**
+- Statistik dataset  
+- Distribusi waktu pengantaran  
+- Feature importance  
 
-Pengalaman kurir
+### 📈 **Model Performance**
+Menampilkan:
+- MAE  
+- RMSE  
+- R²  
+- Interpretasi performa model  
 
-Jenis kendaraan
+### 🧮 **Real‑Time Prediction**
+Input fitur meliputi:
+- Jarak  
+- Waktu persiapan  
+- Cuaca  
+- Lalu lintas  
+- Waktu dalam sehari  
+- Pengalaman kurir  
+- Jenis kendaraan  
 
-Model ini ditujukan untuk meningkatkan akurasi estimasi waktu pengiriman, meningkatkan kepuasan pelanggan, dan membantu perusahaan logistik/food delivery dalam optimalisasi operasional.
+Output berupa **estimasi waktu pengantaran (menit)**.
 
-🧠 Machine Learning Model
-Beberapa model diuji untuk menemukan model terbaik:
+---
 
-Linear Regression (Model Terbaik)
+## 🧠 3. Machine Learning Models
 
-Random Forest Regressor
+Model yang diuji:
 
-XGBoost Regressor
+| Model | Status |
+|-------|--------|
+| **Linear Regression** | ⭐ Terbaik |
+| Random Forest | Pembanding |
+| XGBoost | Pembanding |
+| Ridge & Lasso | Pembanding |
 
-Ridge & Lasso Regression (perbandingan)
+### 📈 **Final Model Performance (Linear Regression)**
 
-Setelah evaluasi metrik dan cross-validation, Linear Regression dipilih sebagai model final karena:
+| Metric | Score |
+|--------|--------|
+| **MAE** | ~6 menit |
+| **RMSE** | ~9 menit |
+| **R²** | ~0.82 |
 
-Performa terbaik (MAE, RMSE, R²)
+---
 
-Interpretasi mudah
+## 🗂️ 4. Dataset
 
-Stabil dan konsisten
+Dataset berasal dari Kaggle:  
+**Food Delivery Time Prediction Dataset**
 
-Cocok untuk kebutuhan ETA operasional
+Dimuat melalui **KaggleHub**.
 
-📊 Model Performance (Linear Regression)
-Metric	Score
-MAE	± 6 menit
-RMSE	± 9 menit
-R²	± 0.82
-📌 Artinya model mampu menjelaskan sekitar 82% variasi waktu pengantaran, dengan error rata-rata sekitar 6 menit.
+### **Fitur utama:**
+- Distance_km  
+- Preparation_Time_min  
+- Courier_Experience_yrs  
+- Weather  
+- Traffic_Level  
+- Time_of_Day  
+- Vehicle_Type  
+- Delivery_Time_min (target)
 
-🗂️ Dataset
-Dataset berasal dari Kaggle:
-Food Delivery Time Prediction Dataset
-Berisi data historis pengantaran lengkap dengan fitur numerik dan kategorikal.
+---
 
-Dataset dimuat menggunakan KaggleHub.
+## 🧹 5. Data Preparation
 
-🧹 Data Preparation
-Imputasi missing values (median untuk numerik, "Unknown" untuk kategorikal)
+- Menghapus kolom tidak relevan  
+- Imputasi missing value  
+- One‑Hot Encoding  
+- Train‑test split  
+- Training model LinearRegression  
 
-One-hot encoding untuk variabel kategorikal
+---
 
-Train-test split (80:20)
+## 🖥️ 6. Installation & Run Locally
 
-Scaling tidak digunakan karena model Linear Regression tetap stabil tanpa scaling
+### Clone Repo
+```bash
+git clone https://github.com/<username>/<repo>.git
+cd <repo>
+```
 
-Feature importance dianalisis melalui koefisien model
-
-🧮 Cara Kerja Aplikasi Streamlit
-Aplikasi menyediakan 3 halaman:
-
-1. Overview & EDA
-Ringkasan dataset
-
-Statistik deskriptif
-
-Distribusi waktu pengantaran
-
-Feature importance (koefisien model)
-
-2. Model Performance
-MAE, RMSE, R²
-
-Interpretasi performa model
-
-3. Prediksi Waktu Pengantaran
-Pengguna dapat memasukkan:
-
-Jarak
-
-Cuaca
-
-Lalu lintas
-
-Waktu
-
-Pengalaman kurir
-
-Jenis kendaraan
-
-Aplikasi akan memberikan estimasi waktu pengantaran secara realtime.
-
-🚀 Cara Menjalankan Project Secara Lokal
-1. Clone Repository
-git clone https://github.com/<username>/<repo-name>.git
-cd <repo-name>
-2. Install Dependencies
+### Install Dependencies
+```bash
 pip install -r requirements.txt
-3. Jalankan Streamlit
+```
+
+### Run Streamlit
+```bash
 streamlit run streamlit_app.py
-🛠️ Tech Stack
-Python 3.9+
+```
 
-Streamlit (UI)
+---
 
-scikit-learn (Machine Learning)
+## 📦 7. Requirements
 
-Pandas & NumPy (data handling)
+```
+streamlit
+pandas
+numpy
+scikit-learn
+kagglehub==0.3.13
+```
 
-KaggleHub (load dataset)
+---
 
-Matplotlib/Altair (visualisasi)
+## 🧰 8. Tech Stack
+- Python  
+- Streamlit  
+- Scikit‑Learn  
+- Pandas & NumPy  
+- KaggleHub  
+- Altair / Matplotlib  
 
-🌟 Fitur Utama
-✔ Prediksi waktu pengantaran real-time
-✔ Data cleaning otomatis (imputasi NaN)
-✔ Feature importance
-✔ Evaluasi model lengkap
-✔ Antarmuka Streamlit yang intuitif
-✔ Integrasi langsung dataset dari KaggleHub
+---
 
-📬 Contact
-Jika ingin kolaborasi, diskusi, atau saran:
-Author: Andrianus Alvien
-📧 Email: andrianusalvien008@gmail.com
+## 📁 9. Project Structure
+```
+📦 Food-Delivery-Time-Prediction
+│── streamlit_app.py
+│── requirements.txt
+│── README.md
+└── notebooks/
+```
+
+---
+
+## 👨‍💻 10. Author
+**Andrianus Alvien**
 
